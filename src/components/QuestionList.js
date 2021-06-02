@@ -43,10 +43,15 @@ const QuestionList = () => {
         };
       });
 
-      const storedResultsQuestions = storedResults.map((rs) => rs.label);
+      let storedResultsQuestions = null;
+      if (storedResults) {
+        storedResultsQuestions = storedResults.map((rs) => rs.label);
+      }
+
       const localResultsQuestions = localResults.map((rs) => rs.label);
 
       const is_same =
+        storedResultsQuestions &&
         storedResultsQuestions.length === localResultsQuestions.length &&
         storedResultsQuestions.every(function (element, index) {
           return element === localResultsQuestions[index];
