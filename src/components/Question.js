@@ -3,19 +3,17 @@ import React, { useState } from "react";
 
 const Question = (props) => {
   const [selectedOption, setSelectedOption] = useState(props.options[0].id);
-  const [pollResult, setPollResult] = useState(null);
 
-  const countValues = props.options.map((opt) => opt.count);
-  const totalValue = countValues.reduce((acc, cur) => acc + cur, 0);
+  const countValues = props.options.map((opt) => +opt.count);
+  const totalValue = countValues.reduce((acc, cur) => acc + +cur, 0);
   const currPoll = props.options.map((opt) => {
     return {
       id: opt.id,
       label: opt.label,
-      count: opt.count,
+      count: +opt.count,
       percentage: Math.round((+opt.count / +totalValue) * 100)
     };
   });
-  console.log(currPoll);
 
   return (
     <div className={styles.question}>
