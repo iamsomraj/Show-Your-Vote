@@ -3,6 +3,19 @@ import React, { useState } from "react";
 
 const Question = (props) => {
   const [selectedOption, setSelectedOption] = useState(props.options[0].id);
+  const [pollResult, setPollResult] = useState(null);
+
+  const countValues = props.options.map((opt) => opt.count);
+  const totalValue = countValues.reduce((acc, cur) => acc + cur, 0);
+  const currPoll = props.options.map((opt) => {
+    return {
+      id: opt.id,
+      label: opt.label,
+      count: opt.count,
+      percentage: Math.round((+opt.count / +totalValue) * 100)
+    };
+  });
+  console.log(currPoll);
 
   return (
     <div className={styles.question}>
@@ -13,9 +26,9 @@ const Question = (props) => {
             value={selectedOption}
             onChange={(e) => setSelectedOption(e.target.value)}
           >
-            {props.options.map((opt) => (
+            {props.options.map((opt, index) => (
               <option key={opt.id} value={opt.id}>
-                {opt.label} - {opt.count}
+                {opt.label} - {opt.count} - {currPoll[index].percentage}
               </option>
             ))}
           </select>
