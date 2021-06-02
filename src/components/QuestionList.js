@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import "./QuestionList.css";
 import data from "../data";
-import Question from "./Question";
+import QuestionItem from "./Question/QuestionItem";
 
 const QuestionList = () => {
   const [results, setResults] = useState([]);
@@ -15,13 +15,13 @@ const QuestionList = () => {
         if (opt.id !== optionId) return opt;
         return {
           ...opt,
-          count: opt.count + 1
+          count: opt.count + 1,
         };
       });
 
       return {
         ...result,
-        options: options
+        options: options,
       };
     });
     localStorage.setItem("results", JSON.stringify(curResults));
@@ -38,8 +38,8 @@ const QuestionList = () => {
           options: question.options.map((opt) => ({
             id: opt.id,
             label: opt.label,
-            count: 0
-          }))
+            count: 0,
+          })),
         };
       });
 
@@ -77,7 +77,7 @@ const QuestionList = () => {
     <div className="question-list">
       {results.map((result) => {
         return (
-          <Question key={result.id} {...result} onClick={btnClickHandler} />
+          <QuestionItem key={result.id} {...result} onClick={btnClickHandler} />
         );
       })}
     </div>
