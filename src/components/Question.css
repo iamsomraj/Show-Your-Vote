@@ -26,6 +26,7 @@
   padding: 0.5rem 2rem;
   font-weight: bold;
   border-radius: 6px;
+  outline: none;
 }
 
 .question button {
@@ -36,4 +37,5 @@
   background-color: #40005d;
   color: white;
   border-radius: 12px;
+  outline: none;
 }
