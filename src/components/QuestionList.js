@@ -31,21 +31,32 @@ const QuestionList = () => {
   useEffect(() => {
     const getResultsFromStorage = () => {
       const storedResults = JSON.parse(localStorage.getItem("results"));
-      if (storedResults !== null && storedResults.length > 0) {
+      const localResults = data.map((question) => {
+        return {
+          id: question.id,
+          label: question.label,
+          options: question.options.map((opt) => ({
+            id: opt.id,
+            label: opt.label,
+            count: 0
+          }))
+        };
+      });
+
+      const storedResultsQuestions = storedResults.map((rs) => rs.label);
+      const localResultsQuestions = localResults.map((rs) => rs.label);
+
+      const is_same =
+        storedResultsQuestions.length === localResultsQuestions.length &&
+        storedResultsQuestions.every(function (element, index) {
+          return element === localResultsQuestions[index];
+        });
+
+      if (storedResults !== null && storedResults.length > 0 && is_same) {
         setResults(storedResults);
       } else {
-        const initialResults = data.map((question) => {
-          return {
-            id: question.id,
-            label: question.label,
-            options: question.options.map((opt) => ({
-              id: opt.id,
-              label: opt.label,
-              count: 0
-            }))
-          };
-        });
-        setResults(initialResults);
+        setResults(localResults);
+        localStorage.setItem("results", JSON.stringify(localResults));
       }
     };
     getResultsFromStorage();
