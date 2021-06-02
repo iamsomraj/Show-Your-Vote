@@ -8,7 +8,7 @@ const ChartItem = (props) => {
       <div className="chart-bar__inner">
         <div className="chart-bar__fill" style={{ height }}></div>
       </div>
-      <div className="chart-bar__label">Option {props.number}</div>
+      <div className="chart-bar__label">{height}</div>
     </div>
   );
 };
