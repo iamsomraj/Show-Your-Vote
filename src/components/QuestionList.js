@@ -50,6 +50,11 @@ const QuestionList = () => {
 
       const localResultsQuestions = localResults.map((rs) => rs.label);
 
+      /**
+       * Comparing for questions from data.js with local storage questions
+       *
+       * Checking labels and ids for each question
+       */
       const is_same =
         storedResultsQuestions &&
         storedResultsQuestions.length === localResultsQuestions.length &&
