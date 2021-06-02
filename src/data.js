@@ -5,7 +5,8 @@ const questions = [
     options: [
       { id: "a", label: "Brilliant! I have so much energy" },
       { id: "b", label: "Always can be worse" },
-      { id: "c", label: "Please, end my misery" }
+      { id: "c", label: "Please, end my misery" },
+      { id: "d", label: "Can't be better thant this" }
     ]
   },
   {
