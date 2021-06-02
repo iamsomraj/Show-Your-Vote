@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import "./QuestionList.css";
 import data from "../data";
 import Question from "./Question";
 
@@ -55,7 +56,7 @@ const QuestionList = () => {
   };
 
   return (
-    <div>
+    <div className="question-list">
       {results.map((result) => {
         return (
           <Question key={result.id} {...result} onClick={btnClickHandler} />

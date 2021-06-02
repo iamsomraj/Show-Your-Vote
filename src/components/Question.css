@@ -1,0 +1,39 @@
+.question {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #4b4b4b;
+}
+
+.question__control {
+  text-align: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.question label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.question select {
+  font: inherit;
+  padding: 0.5rem 2rem;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.question button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 3rem;
+  border: 1px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  border-radius: 12px;
+}

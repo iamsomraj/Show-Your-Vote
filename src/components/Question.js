@@ -1,5 +1,6 @@
-import styles from "./Question.module.css";
 import React, { useState } from "react";
+import Chart from "./Chart";
+import "./Question.css";
 
 const Question = (props) => {
   const [selectedOption, setSelectedOption] = useState(props.options[0].id);
@@ -16,27 +17,28 @@ const Question = (props) => {
   });
 
   return (
-    <div className={styles.question}>
-      <div>
-        <label>{props.label}</label>
-        <div>
+    <div className="question-chart">
+      <div className="question">
+        <label className="question__label">{props.label}</label>
+        <div className="question__control">
           <select
             value={selectedOption}
             onChange={(e) => setSelectedOption(e.target.value)}
           >
             {props.options.map((opt, index) => (
               <option key={opt.id} value={opt.id}>
-                {opt.label} - {opt.count} - {currPoll[index].percentage}
+                {opt.label}
               </option>
             ))}
           </select>
         </div>
+        <div>
+          <button onClick={() => props.onClick(props.id, selectedOption)}>
+            Vote
+          </button>
+        </div>
       </div>
-      <div>
-        <button onClick={() => props.onClick(props.id, selectedOption)}>
-          Vote
-        </button>
-      </div>
+      <Chart currPoll={currPoll} />
     </div>
   );
 };
