@@ -55,7 +55,9 @@ const QuestionList = () => {
         storedResultsQuestions.length === localResultsQuestions.length &&
         storedResultsQuestions.every(function (element, index) {
           return element === localResultsQuestions[index];
-        });
+        }) &&
+        storedResults &&
+        storedResults.every((ele, ind) => ele.id === data[ind].id);
 
       if (storedResults !== null && storedResults.length > 0 && is_same) {
         setResults(storedResults);
