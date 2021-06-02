@@ -27,7 +27,7 @@ const Question = (props) => {
           >
             {props.options.map((opt, index) => (
               <option key={opt.id} value={opt.id}>
-                {opt.label}
+                {index + 1} : {opt.label}
               </option>
             ))}
           </select>
